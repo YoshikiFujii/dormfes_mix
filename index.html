@@ -1,13 +1,213 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8">
-  <title>イベント公式サイト</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>mix｜大抽選会のゲームルール</title>
+  <meta name="description" content="mix イベント 大抽選会の各ゲーム（あっち向いてホイ／押し相撲／早押しクイズ／高速しりとり／風船爆弾ゲーム）のルール案内ページ" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#f7f8fb; /* PDFの紙面に近い淡色 */
+      --ink:#1b1e28;
+      --sub:#4c556a;
+      --brand:#0b84ff;
+      --panel:#ffffff;
+      --rule:#e6e9f2;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:"Noto Sans JP", system-ui, -apple-system, Segoe UI, Roboto, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+      color:var(--ink);
+      background:var(--bg);
+      line-height:1.7;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+    }
+    .container{width:min(960px,92%);margin-inline:auto}
+    header.hero{
+      background:linear-gradient(180deg,#fff, #f3f5fa);
+      border-bottom:1px solid var(--rule);
+      padding:48px 0 28px;
+      text-align:center;
+    }
+    .eyebrow{
+      display:inline-block;
+      font-size:12px;
+      letter-spacing:.08em;
+      color:#5f6b86;
+      border:1px solid var(--rule);
+      border-radius:999px;
+      padding:6px 10px;
+      background:#fff;
+    }
+    h1{
+      margin:14px 0 8px;
+      font-size:clamp(24px,5vw,40px);
+      line-height:1.2;
+    }
+    .lead{color:var(--sub);max-width:720px;margin:0 auto}
+
+    .panel{
+      background:var(--panel);
+      border:1px solid var(--rule);
+      border-radius:16px;
+      padding:24px;
+      margin:22px 0;
+      box-shadow:0 6px 24px rgba(10,18,41,.04);
+    }
+    .panel h2{
+      margin:0 0 12px;
+      font-size:clamp(18px,2.4vw,24px);
+      display:flex;align-items:center;gap:.55em;
+    }
+    .badge{font-size:12px;color:#fff;background:var(--brand);padding:4px 10px;border-radius:999px}
+    .kome{color:#6a738a;font-size:14px;margin-top:8px}
+
+    ol{margin:0 0 0 1.2em;padding:0}
+    li{padding-left:.35em;margin:.35em 0}
+
+    .note{
+      border-left:3px solid var(--brand);
+      padding:10px 12px;
+      background:#f1f6ff;
+      color:#22345a;
+      border-radius:8px;
+      margin-top:12px;
+    }
+
+    .grid{display:grid;gap:16px}
+    @media (min-width:800px){
+      .grid{grid-template-columns:1fr 1fr}
+    }
+
+    footer{
+      color:#7b859d;
+      text-align:center;
+      padding:36px 0 56px;
+      font-size:13px;
+    }
+    nav.toc{position:sticky;top:8px}
+    .toc a{display:block;padding:8px 10px;border-radius:10px;color:#3a4562;text-decoration:none}
+    .toc a:hover{background:#eef3ff}
+
+    .layout{display:grid;gap:18px}
+    @media (min-width:1024px){
+      .layout{grid-template-columns:260px 1fr}
+    }
+    .toc-box{background:#fff;border:1px solid var(--rule);border-radius:14px;padding:14px}
+    .toc-title{font-size:14px;color:#4c556a;margin:2px 0 8px}
+  </style>
 </head>
 <body>
-  <h1>○○イベント 公式サイト</h1>
-  <p>日程: 2025年10月1日</p>
-  <p>場所: 千葉工業大学 ○○キャンパス</p>
-  <p>詳細は随時公開します！</p>
+  <header class="hero">
+    <div class="container">
+      <span class="eyebrow">mix イベント</span>
+      <h1>大抽選会のゲームルール</h1>
+      <p class="lead">会場で実施する各ゲームの進め方と勝敗条件を、PDFのレイアウトに近い紙面風デザインでまとめました。</p>
+    </div>
+  </header>
+
+  <main class="container layout" id="top">
+    <aside class="toc-box">
+      <nav class="toc" aria-label="目次">
+        <div class="toc-title">目次</div>
+        <a href="#game-atti">あっち向いてホイ</a>
+        <a href="#game-oshi">押し相撲</a>
+        <a href="#game-quiz">早押しクイズ</a>
+        <a href="#game-shiri">高速しりとり</a>
+        <a href="#game-balloon">風船爆弾ゲーム</a>
+      </nav>
+    </aside>
+
+    <section>
+      <div class="panel" id="game-atti">
+        <h2><span class="badge">GAME 1</span> あっち向いてホイ</h2>
+        <ol>
+          <li>初めに「じゃんけん」をします。</li>
+          <li>勝った人が「指を指す役」、負けた人が「顔を向ける役」になります。</li>
+          <li>勝った人は「<ruby>あっち向<rt>む</rt></ruby>いてホイ」と言いながら、上下左右のいずれかを指差します。</li>
+          <li>負けた人はそのタイミングで、指された方向とは違う方向に顔を向ければセーフ。</li>
+          <li>指した方向と顔を向けた方向が同じだったら、指した人の勝利。</li>
+        </ol>
+      </div>
+
+      <div class="panel" id="game-oshi">
+        <h2><span class="badge">GAME 2</span> 押し相撲</h2>
+        <ol>
+          <li><strong>位置決め</strong>：2 人が向かい合い、足は揃えて立ちます。</li>
+          <li><strong>合図</strong>：行司役の人の「はっけよい、残った！」の合図で始めます。</li>
+          <li><strong>押し合い</strong>：お互いに手のひらで押し合います。</li>
+          <li><strong>勝敗</strong>：バランスを崩して足が動いたり、地面から離れた方が負けです。</li>
+        </ol>
+        <div class="note">
+          ※体を直接掴んだり、相手の体を叩いたりしてはいけません。<br />
+          ※相手の足が動いたり、浮いたりしたら負けとなります。
+        </div>
+      </div>
+
+      <div class="panel" id="game-quiz">
+        <h2><span class="badge">GAME 3</span> 早押しクイズ</h2>
+        <ol>
+          <li><strong>出題</strong>：司会（出題者）が問題文を読み始めます。</li>
+          <li><strong>解答権の獲得</strong>：参加者は「分かった！」と思った時点でボタンを押し解答権を得ます。<br />
+            <span class="kome">※早く押した人が優先です。</span></li>
+          <li><strong>解答</strong>：押した人が答えます。</li>
+          <li><strong>正誤判定</strong>：
+            <div class="grid">
+              <div>• 正解 → 得点（1 点）</div>
+              <div>• 不正解 → 解答権を失い、相手に解答権が移る。</div>
+            </div>
+          </li>
+          <li><strong>勝敗の決定</strong>：2 点を先に取った方が勝利。</li>
+        </ol>
+      </div>
+
+      <div class="panel" id="game-shiri">
+        <h2><span class="badge">GAME 4</span> 高速しりとり</h2>
+        <ol>
+          <li><strong>基本</strong>：前の人が言った言葉の最後の文字で始まる言葉をつなげていきます。</li>
+          <li><strong>テンポ</strong>：回答のテンポは手で「パンパン」と 2 回叩くスピード（司会が例を見せます）。</li>
+          <li><strong>禁止事項</strong>：
+            <ul>
+              <li>「ん」で終わる言葉を言ったら負け。</li>
+              <li>単語（名詞）以外の文章等はなし。</li>
+              <li>語尾が伸ばし棒の単語の場合は一つ前の言葉（例：ルビー→「ビ」）。</li>
+              <li>語尾が濁点の言葉は濁点なしに変更不可（例：うさぎ→「ぎ」のみ、「き」は不可）。</li>
+              <li>語尾が小文字の場合は小文字／前の文字どちらでも可（例：キティ→「イ」でも「ティ」でも可）。</li>
+            </ul>
+          </li>
+          <li><strong>勝敗</strong>：脱落して最後まで残った人が勝利。</li>
+        </ol>
+      </div>
+
+      <div class="panel" id="game-balloon">
+        <h2><span class="badge">GAME 5</span> 風船爆弾ゲーム</h2>
+        <ol>
+          <li><strong>順番</strong>：
+            <ul>
+              <li>参加者が交代で風船に空気入れで空気を入れます。</li>
+              <li>1 回に 1 回以上ポンプを押す。</li>
+              <li>1 回以上なら何回押しても良い。</li>
+            </ul>
+          </li>
+          <li><strong>勝敗</strong>：
+            <ul>
+              <li>自分の番で風船を割ってしまった人が負け。</li>
+              <li>割らずに回避できた人はセーフ。</li>
+              <li>このゲームは 1〜3 等でのみ実施。</li>
+            </ul>
+          </li>
+        </ol>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © mix event / 大抽選会ルール案内
+  </footer>
 </body>
 </html>
