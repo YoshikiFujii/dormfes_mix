@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#f7f8fb; /* PDFの紙面に近い淡色 */
+      --bg:#f7f8fb;
       --ink:#1b1e28;
       --sub:#4c556a;
       --brand:#0b84ff;
@@ -58,13 +58,26 @@
       padding:24px;
       margin:22px 0;
       box-shadow:0 6px 24px rgba(10,18,41,.04);
+      position:relative;
     }
-    .panel h2{
-      margin:0 0 12px;
-      font-size:clamp(18px,2.4vw,24px);
-      display:flex;align-items:center;gap:.55em;
+    .panel h2 {
+        position: relative;
+        z-index: 1; /* テキストを最前面に */
     }
-    .badge{font-size:12px;color:#fff;background:var(--brand);padding:4px 10px;border-radius:999px}
+
+    .panel h2 img.icon{
+        position:absolute;
+        left:-20px;
+        top:-10px;
+        width:80px;
+        height:auto;
+        z-index:-1;          /* 文字より後ろ */
+        pointer-events:none;/* タップや選択の邪魔をしない */
+    }
+
+
+
+    .badge{font-size:12px;color:#fff;background:var(--brand);padding:4px 10px;border-radius:999px;z-index:1;position:relative}
     .kome{color:#6a738a;font-size:14px;margin-top:8px}
 
     ol{margin:0 0 0 1.2em;padding:0}
@@ -105,7 +118,7 @@
 <body>
   <header class="hero">
     <div class="container">
-      <span class="eyebrow">令和7年度寮祭-mix-</span>
+      <span class="eyebrow">令和７年度寮祭-mix-</span>
       <h1>大抽選会のゲームルール</h1>
     </div>
   </header>
@@ -124,18 +137,24 @@
 
     <section>
       <div class="panel" id="game-atti">
-        <h2><span class="badge">GAME 1</span> あっち向いてホイ</h2>
+        <h2>
+        <img src="ink1.png" alt="" class="icon" aria-hidden="true" />
+        あっち向いてホイ
+        </h2>
         <ol>
           <li>初めに「じゃんけん」をします。</li>
           <li>勝った人が「指を指す役」、負けた人が「顔を向ける役」になります。</li>
-          <li>勝った人は「<ruby>あっち向<rt>む</rt></ruby>いてホイ」と言いながら、上下左右のいずれかを指差します。</li>
+          <li>勝った人は「あっち向いてホイ」と言いながら、上下左右のいずれかを指差します。</li>
           <li>負けた人はそのタイミングで、指された方向とは違う方向に顔を向ければセーフ。</li>
           <li>指した方向と顔を向けた方向が同じだったら、指した人の勝利。</li>
         </ol>
       </div>
 
       <div class="panel" id="game-oshi">
-        <h2><span class="badge">GAME 2</span> 押し相撲</h2>
+        <h2>
+          <img src="ink2.png" alt="icon" class="icon" />
+          押し相撲
+        </h2>
         <ol>
           <li><strong>位置決め</strong>：2 人が向かい合い、足は揃えて立ちます。</li>
           <li><strong>合図</strong>：行司役の人の「はっけよい、残った！」の合図で始めます。</li>
@@ -149,7 +168,10 @@
       </div>
 
       <div class="panel" id="game-quiz">
-        <h2><span class="badge">GAME 3</span> 早押しクイズ</h2>
+        <h2>
+          <img src="ink3.png" alt="icon" class="icon" />
+          早押しクイズ
+        </h2>
         <ol>
           <li><strong>出題</strong>：司会（出題者）が問題文を読み始めます。</li>
           <li><strong>解答権の獲得</strong>：参加者は「分かった！」と思った時点でボタンを押し解答権を得ます。<br />
@@ -166,7 +188,10 @@
       </div>
 
       <div class="panel" id="game-shiri">
-        <h2><span class="badge">GAME 4</span> 高速しりとり</h2>
+        <h2>
+          <img src="ink1.png" alt="icon" class="icon" />
+          高速しりとり
+        </h2>
         <ol>
           <li><strong>基本</strong>：前の人が言った言葉の最後の文字で始まる言葉をつなげていきます。</li>
           <li><strong>テンポ</strong>：回答のテンポは手で「パンパン」と 2 回叩くスピード（司会が例を見せます）。</li>
@@ -184,7 +209,10 @@
       </div>
 
       <div class="panel" id="game-balloon">
-        <h2><span class="badge">GAME 5</span> 風船爆弾ゲーム</h2>
+        <h2>
+          <img src="ink2.png" alt="icon" class="icon" />
+          風船爆弾ゲーム
+        </h2>
         <ol>
           <li><strong>順番</strong>：
             <ul>
@@ -206,7 +234,7 @@
   </main>
 
   <footer>
-    © mix event / 大抽選会ルール案内
+    © 千葉工業大学寮友会執行役員会 / 令和７年度寮祭-mix-
   </footer>
 </body>
 </html>
