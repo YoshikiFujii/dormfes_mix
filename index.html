@@ -276,5 +276,27 @@
   <footer>
     © 千葉工業大学寮友会執行役員会 / 令和７年度寮祭-mix-
   </footer>
+
+  <script>
+    (() => {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-centered');
+          } else {
+            entry.target.classList.remove('is-centered');
+          }
+        });
+      }, { 
+        threshold: 0.5,
+        rootMargin: '-10% 0px'
+      });
+
+      // パネル要素を監視対象に追加
+      document.querySelectorAll('.panel').forEach(panel => {
+        io.observe(panel);
+      });
+    })();
+  </script>
 </body>
 </html>
