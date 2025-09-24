@@ -31,8 +31,8 @@
     }
     .container{width:min(960px,92%);margin-inline:auto}
     header.hero{
-      background: linear-gradient(#ffffff 60%, #fbc85a);
-      padding:48px 0 28px;
+      background: linear-gradient(#fffce9 80%, #fbc85a);
+      padding:45px 0 90px;
       text-align:center;
     }
     /* 画像タイトル用 */
@@ -63,23 +63,30 @@
 
     /* === Deck風：裏パネル＋中央で拡大＆傾き === */
     .panel{
-      background: #fff;
       position: relative;
-      isolation: isolate;               /* 擬似要素の重なりを安定させる */
-      transform-origin: center;
-      transition: transform .35s cubic-bezier(.2,.7,.2,1),
-                  box-shadow .35s cubic-bezier(.2,.7,.2,1);
-      will-change: transform;
     }
     .panel::before{
       content:"";
       position:absolute;
-      inset:0;                          /* 同サイズ */
-      border-radius:inherit;
-      background:#5c83e4;               /* 灰色の裏パネル */
-      transform: translate(12px,12px) rotate(-2deg);
-      z-index:-1;                       /* 表パネルの“裏側”へ */
-      transition: transform .35s cubic-bezier(.2,.7,.2,1);
+      top:0;left:0;right:0;bottom:0;
+      background:var(--rule);
+      border-radius:16px;
+      z-index:-1;                       /* 本体の後ろ */
+      transform: translate(10px,3px) rotate(-2deg);
+      transition: transform .35s cubic-bezier(.2,.7,.2,1),
+                  box-shadow .35s cubic-bezier(.2,.7,.2,1);
+      will-change: transform;
+    }
+    .panel::after{
+      content:"";
+      position:absolute;
+      top:0;left:0;right:0;bottom:0;
+      background:var(--rule);
+      border-radius:16px;
+      background:white;
+      transition: transform .35s cubic-bezier(.2,.7,.2,1),
+                  box-shadow .35s cubic-bezier(.2,.7,.2,1);
+      z-index:-1;
     }
     .panel.is-centered{
       transform: perspective(1000px) rotateX(0.6deg) rotateZ(0.6deg) scale(1.02);
@@ -94,7 +101,7 @@
 
     .panel h2{
         position: relative;
-        z-index: 1;
+        z-index: 0;
         font-family: "Mochiy Pop One", "Noto Sans JP", system-ui, -apple-system, Segoe UI, Roboto, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
         font-weight: 400; /* Mochiy Pop One は 400のみ。太字を明示的に避ける */
     }
@@ -153,7 +160,7 @@
       if (dist < bestDist) { bestDist = dist; best = p; }
     }
 
-    const threshold = Math.min(window.innerHeight * 0.25, 240); // 画面中央に十分近いか
+    const threshold = Math.min(window.innerHeight * 0.25, 240);
     panels.forEach(p => p.classList.toggle('is-centered', p === best && bestDist < threshold));
   }
 
@@ -170,6 +177,7 @@
   update();
 })();
 </script>
+
 <body>
   <header class="hero">
     <div class="container">
